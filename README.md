@@ -1,62 +1,20 @@
-# Library Management System (Kotlin Console App)
+# library-system
+1. Project name and short description
+Library Management System
+A console application that simulates a small library: adding books, borrowing and returning them, checking availability, and viewing book ratings.
 
-A small console application that simulates a library: adding books, borrowing/returning
-them, and reviewing the catalog. Built purely in Kotlin/JVM (no Android UI) to demonstrate
-core Kotlin and OOP concepts in one connected program.
+2. How to run the project
+Open the project folder in IntelliJ IDEA as a Gradle project, let it sync dependencies, then open Main.kt and click the green Run button next to fun main().
 
-## How to run
+3. Where the main homework requirements are demonstrated
+Variables, data types, conditions, loops — in Main.kt (if/else, for, while)
+List, Set, Map — in Library.kt (books list, genres set, catalog map)
+map/filter/reduce — in Library.kt (getAvailableBooks, getTitles, sumOfYears)
+Functions, higher-order functions, lambdas — processBooks function in Library.kt
+Classes and objects — Book, Library, LibraryItem
+Inheritance — PrintedBook and EBook extend LibraryItem
+Interfaces and polymorphism — Describable interface, overridden describe() method
+Data class — Book.kt
+Sealed class — LibraryEvent in Events.kt
+Suspend function and coroutine — fetchBookRating in Library.kt, called with async/awaitAll in Main.kt
 
-### Option A — IntelliJ IDEA (recommended)
-1. Open IntelliJ IDEA → `Open` → select the `library-system` folder.
-2. Let IntelliJ import it as a Gradle project (it will download the wrapper automatically).
-3. Open `src/main/kotlin/Main.kt` and click the green ▶ run button next to `fun main()`.
-
-### Option B — Command line (if you have Gradle installed)
-```bash
-gradle run
-```
-
-## Project structure
-```
-src/main/kotlin/
- ├─ Book.kt        -> data class
- ├─ LibraryItem.kt -> interface, abstract class, inheritance, polymorphism
- ├─ Events.kt       -> sealed class + event handling function
- ├─ Library.kt      -> collections, higher-order functions, suspend function
- └─ Main.kt         -> entry point, ties everything together
-```
-
-## Where each requirement is demonstrated
-
-| Requirement | Location |
-|---|---|
-| Variables, data types, conditions, loops | `Main.kt` (val/var, if/else, for, while) |
-| List, Set, Map | `Library.kt` (`books`, `genres`, `catalog`) |
-| map / filter / reduce | `Library.kt` (`getAvailableBooks`, `getTitles`, `sumOfYears`) |
-| Functions, higher-order functions, lambdas | `Library.kt` (`processBooks`), used in `Main.kt` |
-| Classes and objects | `Book`, `Library`, `LibraryItem` and subclasses |
-| Inheritance | `LibraryItem.kt` (`PrintedBook`, `EBook` extend `LibraryItem`) |
-| Interfaces and polymorphism | `Describable` interface, overridden `describe()` |
-| Data class | `Book.kt` |
-| Sealed class | `Events.kt` (`LibraryEvent`) |
-| Suspend function + coroutine | `Library.kt` (`fetchBookRating`), launched with `async`/`awaitAll` in `Main.kt` |
-
-## Example output (shortened)
-```
-=== Library Management System ===
-[ADDED] Kotlin in Action
-[ADDED] Clean Code
-[ADDED] 1984
-Kotlin in Action by Dmitry Jemerov (available)
-...
-[BORROWED] Alice took "Kotlin in Action"
-[ERROR] "Kotlin in Action" is already borrowed
-[RETURNED] Alice returned "Kotlin in Action"
-Available books: [Kotlin in Action, Clean Code, 1984]
-...
-Fetching ratings concurrently (coroutines):
- * Kotlin in Action -> rating 2.0
- * Clean Code -> rating 1.0
- * 1984 -> rating 5.0
-Done. Thanks for visiting the library!
-```
